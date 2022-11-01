@@ -16,6 +16,7 @@
 		49342F18290FC45E0000C65E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49342F16290FC45E0000C65E /* LaunchScreen.storyboard */; };
 		49ACF72F29116DEF00251C2B /* calculateIsland.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ACF72E29116DEF00251C2B /* calculateIsland.swift */; };
 		49ACF73229117EBA00251C2B /* dataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ACF73129117EBA00251C2B /* dataModel.swift */; };
+		49ACF7342911D34600251C2B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 49ACF7332911D34600251C2B /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		49342F19290FC45E0000C65E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49ACF72E29116DEF00251C2B /* calculateIsland.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calculateIsland.swift; sourceTree = "<group>"; };
 		49ACF73129117EBA00251C2B /* dataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataModel.swift; sourceTree = "<group>"; };
+		49ACF7332911D34600251C2B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +48,7 @@
 		49342EFF290FC45A0000C65E = {
 			isa = PBXGroup;
 			children = (
+				49ACF7332911D34600251C2B /* README.md */,
 				49342F0A290FC45B0000C65E /* islands */,
 				49342F09290FC45B0000C65E /* Products */,
 			);
@@ -152,6 +155,7 @@
 			files = (
 				49342F18290FC45E0000C65E /* LaunchScreen.storyboard in Resources */,
 				49342F15290FC45E0000C65E /* Assets.xcassets in Resources */,
+				49ACF7342911D34600251C2B /* README.md in Resources */,
 				49342F13290FC45B0000C65E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
