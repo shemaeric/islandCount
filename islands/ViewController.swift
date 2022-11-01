@@ -7,12 +7,14 @@
 
 import UIKit
 
-let islandCount = 0
 let screenWidth = UIScreen.main.bounds.width
+let check = false
 
-let data = [[Int]](repeating: [0, 0, 0, 0, 0, 0], count: 60)
+var dataModel = DataModel()
 
 class ViewController: UIViewController {
+    
+    var islandCount = 0
     
     let collectionView: UICollectionView = {
         
@@ -42,20 +44,28 @@ class ViewController: UIViewController {
         
     }()
     
+    let islandCountView: UILabel = {
+        
+        let label = UILabel()
+        
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // The count for the islands
-        let islandCountView = UILabel(frame: CGRect(x: 20, y: 100, width: view.frame.width, height: 40))
+        islandCountView.frame = CGRect(x: 20, y: 100, width: view.frame.width, height: 40)
         islandCountView.text = "Island Count : \(islandCount)"
         islandCountView.font = .systemFont(ofSize: 16, weight: UIFont.Weight.semibold)
         islandCountView.textColor = .darkGray
         
         view.addSubview(islandCountView)
         view.addSubview(collectionView)
+        
+        resetButton.addTarget(self, action: #selector(resetAction), for: .touchUpInside)
         view.addSubview(resetButton)
         
-//        collectionView.backgroundColor = .blue
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -67,7 +77,6 @@ class ViewController: UIViewController {
         collectionView.heightAnchor.constraint(equalToConstant: view.frame.height / 1.5).isActive = true
         
         // Reset Button Constrainst
-        print("the top anchor", collectionView.frame)
         resetButton.translatesAutoresizingMaskIntoConstraints = false
         resetButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         resetButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
@@ -76,26 +85,43 @@ class ViewController: UIViewController {
         
     }
     
+    
+    @objc func resetAction() {
+        
+        dataModel = DataModel()
+        islandCountView.text = "Island Count : \(0)"
+        collectionView.reloadData()
+    
+    }
+    
+    
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        data.count
+        dataModel.dataSize
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! IslandCollectionViewCell
         
-//        cell.layer.borderColor = UIColor.darkGray.cgColor
         cell.layer.borderWidth = 0.5
+        
+        cell.reload()
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        print("It was selected ----", data)
+        
+        if let cell = collectionView.cellForItem(at: indexPath) as? IslandCollectionViewCell {
+            cell.select(id: indexPath[1])
+            islandCountView.text = "Island Count : \(dataModel.islands)"
+        }
+        
     }
     
+    
 }
-
